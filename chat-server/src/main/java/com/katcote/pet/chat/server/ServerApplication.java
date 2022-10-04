@@ -18,8 +18,8 @@ public class ServerApplication {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-
+                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            socketChannel.pipeline().addLast(new MainHandler());
                         }
                     });
             ChannelFuture future = b.bind(8189).sync();

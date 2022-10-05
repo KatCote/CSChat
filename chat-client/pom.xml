@@ -48,6 +48,13 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.82.Final</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-graphics -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>20-ea+3</version>
+        </dependency>
+
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-codec</artifactId>

@@ -37,6 +37,7 @@ public class Network {
 
                 ChannelFuture future = b.connect(HOST, PORT).sync();
 
+                future.channel().close();
                 future.channel().closeFuture().sync();
 
             } catch (Exception e) {

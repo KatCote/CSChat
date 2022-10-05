@@ -6,9 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="chat-server" />
         <module name="chat-client" />
+        <module name="chat-server" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="chat-client" target="18" />
+      <module name="chat-server" target="18" />
+      <module name="CSChat" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>

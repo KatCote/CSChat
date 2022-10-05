@@ -8,14 +8,32 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class Network {
 
     private SocketChannel sChannel;
 
-    private static final String HOST = "localhost";
-    private static final int PORT = 8189;
+
+    private static String HOST;
+    private static int PORT;
+
+
+
 
     public Network(CallBack onMsgReceivedCallBack){
+
+        Properties props = new Properties();
+
+        try {
+            props.load(new FileInputStream("config.ini"));
+        } catch (IOException e) {e.printStackTrace();}
+
+        HOST = props.getProperty("HOST");
+        PORT = Integer.parseInt(props.getProperty("PORT"));
 
         Thread t = new Thread(() -> {
             EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -36,8 +54,6 @@ public class Network {
                         });
 
                 ChannelFuture future = b.connect(HOST, PORT).sync();
-
-                future.channel().close();
                 future.channel().closeFuture().sync();
 
             } catch (Exception e) {
@@ -47,14 +63,15 @@ public class Network {
             }
 
         });
-
-        t.setDaemon(true);
         t.start();
 
+    }
+
+    public void close() {
+        sChannel.close();
     }
 
     public void sendMessage(String str){
         sChannel.writeAndFlush(str);
     }
-
 }

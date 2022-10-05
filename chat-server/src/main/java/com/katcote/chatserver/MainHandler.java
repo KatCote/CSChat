@@ -18,7 +18,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Client is connected: " + ctx);
-        sysMessage(clientName + " join\n");
+        sysMessage((clientName + " join\n"));
         channelsList.add(ctx.channel());
         clientName = "Client #" + newClientIndex;
         newClientIndex++;

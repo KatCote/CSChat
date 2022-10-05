@@ -9,7 +9,7 @@
 <VBox fx:controller="com.katcote.chatclient.Controller" xmlns:fx="http://javafx.com/fxml" >
     <TextArea fx:id="mainArea" editable="false" VBox.vgrow="ALWAYS"/>
     <HBox>
-        <TextField fx:id="msgField" HBox.hgrow="ALWAYS" promptText="Сообщение"/>
-        <Button text="Отправить"/>
+        <TextField fx:id="msgField" HBox.hgrow="ALWAYS" promptText="Сообщение" onAction="#sendMsgAction"/>
+        <Button text="Отправить" onAction="#sendMsgAction"/>
     </HBox>
 </VBox>

@@ -3,9 +3,12 @@ package com.katcote.chatserver;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
 
 
-public class MainHandler extends ChannelInboundHandlerAdapter {
+public class MainHandler extends SimpleChannelInboundHandler<String> {
+
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -13,12 +16,8 @@ public class MainHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf buf = (ByteBuf)msg;
-        while(buf.readableBytes() > 0){
-            System.out.print((char)buf.readByte());
-        }
-        buf.release();
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+
     }
 
     @Override

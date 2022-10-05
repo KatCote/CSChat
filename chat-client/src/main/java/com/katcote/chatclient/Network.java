@@ -1,9 +1,7 @@
 package com.katcote.chatclient;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -17,16 +15,9 @@ public class Network {
     private static final String HOST = "localhost";
     private static final int PORT = 8189;
 
-    public String getHost(){
-        return HOST;
-    }
+    public Network(CallBack onMsgReceivedCallBack){
 
-    public int getPort(){
-        return PORT;
-    }
-
-    public Network(){
-        new Thread(() -> {
+        Thread t = new Thread(() -> {
             EventLoopGroup workerGroup = new NioEventLoopGroup();
 
             try {
@@ -37,7 +28,10 @@ public class Network {
                             @Override
                             protected void initChannel(SocketChannel socketChannel) throws Exception {
                                 sChannel = socketChannel;
-                                socketChannel.pipeline().addLast(new StringDecoder(), new StringEncoder());
+                                socketChannel.pipeline().addLast(
+                                        new StringDecoder(),
+                                        new StringEncoder(),
+                                        new ClientHandler(onMsgReceivedCallBack));
                             }
                         });
 
@@ -51,7 +45,10 @@ public class Network {
                 workerGroup.shutdownGracefully();
             }
 
-        }).start();
+        });
+
+        t.setDaemon(true);
+        t.start();
 
     }
 

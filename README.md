@@ -2,6 +2,15 @@
       <img src="https://i.ibb.co/rZF2rhn/CSChat2.png" width="726">
 </p>
 
+<p align="center">
+   <img src="https://img.shields.io/badge/Patch-v0.5.1-yellowgreen" alt="Patch">
+   <img src="https://img.shields.io/badge/Java-v18.0.2-orange" alt="Java">
+         <img src="https://img.shields.io/badge/maven-v4.0.0-red" alt="Maven">
+</p>
+
+
+
+
 ## About
 
 Client-Server Chat platform with encryption based on Netty.

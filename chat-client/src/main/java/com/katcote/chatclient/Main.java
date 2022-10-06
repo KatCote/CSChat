@@ -29,7 +29,7 @@ public class Main extends Application {
         Controller controller = fxmlLoader.getController();
 
         primaryStage.setOnCloseRequest(event -> controller.exitAction());
-        primaryStage.setTitle("CSChat System");
+        primaryStage.setTitle("CSChat System(R)");
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

@@ -26,6 +26,9 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+        if(msg.isBlank()){
+            return;
+        }
         if(msg.startsWith("/changename ")){
             if(msg.endsWith(" ")){
                 ctx.writeAndFlush("Name can't end with space\n");

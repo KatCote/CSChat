@@ -1,9 +1,29 @@
-CSChat System(R) Version 1.0.0 Alpha 05/10/2022
+<p align="center">
+      <img src="https://i.ibb.co/rZF2rhn/CSChat2.png" width="726">
+</p>
 
-GENERAL USAGE NOTES
--------------------
+<p align="center">
+   <img src="https://img.shields.io/badge/Patch-v0.5.1-yellowgreen" alt="Patch">
+   <img src="https://img.shields.io/badge/Java-v18.0.2-orange" alt="Java">
+         <img src="https://img.shields.io/badge/maven-v4.0.0-red" alt="Maven">
+</p>
 
-Will be added soon.
-===================
-E-mail: filtermr@gmail.com
-Web site: KatCote.com (in progress)
+
+
+
+## About
+
+Client-Server Chat platform with encryption based on Netty.
+Project in progress.
+
+## Documentation
+
+Will be soon
+
+## Developers
+
+- [KatCote](https://github.com/KatCote)
+
+## License
+
+Will be soon

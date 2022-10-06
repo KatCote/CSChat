@@ -1,3 +1,8 @@
+.root {
+    -fx-base: #111111;
+    -fx-faint-focus-color: #111111;
+}
+
 #mainArea{
     -fx-font-size: 15;
     -fx-font-family: "Lucida Console";

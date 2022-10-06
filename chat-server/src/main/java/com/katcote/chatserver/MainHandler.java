@@ -6,8 +6,6 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-
 
 public class MainHandler extends SimpleChannelInboundHandler<String> {
 
@@ -34,7 +32,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
                 ctx.writeAndFlush("Name can't end with space\n");
                 return;
             }
-            if(msg.split("\\s", 2)[1].toLowerCase(Locale.ROOT) == "server"){
+            if(msg.split("\\s", 2)[1].toLowerCase() == "server"){
                 ctx.writeAndFlush("Not today, dude");
                 return;
             }

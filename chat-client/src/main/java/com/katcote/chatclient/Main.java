@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -31,8 +32,9 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(event -> controller.exitAction());
         primaryStage.setTitle("CSChat System(R)");
         Scene scene = new Scene(root, WIDTH, HEIGHT);
+        primaryStage.getIcons().add(new Image("D://IDEA/CSChat/src/icon.png"));
         primaryStage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
         primaryStage.show();
     }
 

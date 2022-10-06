@@ -8,6 +8,7 @@ module com.katcote.chatclient {
     requires io.netty.handler;
     requires io.netty.codec;
 
+
     opens com.katcote.chatclient to javafx.fxml;
     exports com.katcote.chatclient;
 }

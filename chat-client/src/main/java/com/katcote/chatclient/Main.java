@@ -23,12 +23,16 @@ public class Main extends Application {
 
         int WIDTH = Integer.parseInt(props.getProperty("W_WIDTH"));
         int HEIGHT = Integer.parseInt(props.getProperty("W_HEIGHT"));
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
         Parent root = fxmlLoader.load();
         Controller controller = fxmlLoader.getController();
+
         primaryStage.setOnCloseRequest(event -> controller.exitAction());
-        primaryStage.setTitle("CSChat Client");
-        primaryStage.setScene(new Scene(root, WIDTH, HEIGHT));
+        primaryStage.setTitle("CSChat System");
+        Scene scene = new Scene(root, WIDTH, HEIGHT);
+        primaryStage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         primaryStage.show();
     }
 

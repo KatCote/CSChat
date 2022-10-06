@@ -1,0 +1,27 @@
+#mainArea{
+    -fx-font-size: 15;
+    -fx-font-family: "monospace";
+    -fx-text-fill: #00ff00;
+    -fx-control-inner-background: #111111;
+}
+
+.button{
+    -fx-font-size: 15;
+    -fx-font-family: "monospace";
+    -fx-text-fill: #00ff00;
+    -fx-background-color: #111111;
+}
+
+#msgField{
+    -fx-font-size: 15;
+    -fx-font-family: "monospace";
+    -fx-text-fill: #00ff00;
+    -fx-background-color: #111111;
+}
+
+#VBox{
+    -fx-background-color: #111111;
+    -fx-border-color: #111111;
+    -fx-background-insets: 0;
+
+}

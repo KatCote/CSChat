@@ -26,4 +26,4 @@ Will be soon
 
 ## License
 
-Will be soon
+Distributed under MIT License.

@@ -13,6 +13,8 @@
 Client-Server Chat platform with encryption based on Netty.
 Project in progress.
 
+**Has not encryption now**
+
 ## Documentation
 
 Project run on Java 18 and contains all the necessary libraries.

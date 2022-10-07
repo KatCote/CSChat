@@ -10,10 +10,22 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class ServerApplication {
 
-    private static final int PORT = 8189;
     public static void main(String[] args) {
+
+        Properties props = new Properties();
+
+        try {
+            props.load(new FileInputStream("config.ini"));
+        } catch (
+                IOException e) {e.printStackTrace();}
+
+        int PORT = Integer.parseInt(props.getProperty("PORT"));
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();

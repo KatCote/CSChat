@@ -23,4 +23,4 @@ Will be soon
 
 ## License
 
-Distributed under MIT License.
+The CSChat Project is distribution under MIT License.

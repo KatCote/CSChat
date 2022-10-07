@@ -18,9 +18,6 @@
      -fx-background-color: darkgray;
 }
 
-.menu-item:focused .label {
-    -fx-text-fill: blue;
-}
 
 #mainArea{
     -fx-font-size: 15;

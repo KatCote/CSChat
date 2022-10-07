@@ -1,0 +1,32 @@
+.root {
+    -fx-base: #ffffff;
+    -fx-faint-focus-color: #ffffff;
+}
+
+#mainArea{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #111111;
+    -fx-control-inner-background: #ffffff;
+}
+
+.button{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #111111;
+    -fx-background-color: #ffffff;
+}
+
+#msgField{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #111111;
+    -fx-background-color: #ffffff;
+}
+
+#VBox{
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ffffff;
+    -fx-background-insets: 0;
+
+}

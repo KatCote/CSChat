@@ -3,24 +3,39 @@
     -fx-faint-focus-color: #111111;
 }
 
+.MenuBar{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #111111;
+}
+
+.menu-item .label {
+    -fx-text-fill: white;
+}
+
+.menu-item:focused {
+     -fx-background-color: darkgray;
+}
+
+
 #mainArea{
     -fx-font-size: 15;
     -fx-font-family: "Lucida Console";
-    -fx-text-fill: #00ff00;
     -fx-control-inner-background: #111111;
 }
 
 .button{
     -fx-font-size: 15;
     -fx-font-family: "Lucida Console";
-    -fx-text-fill: #00ff00;
+    -fx-text-fill: #ffffff;
     -fx-background-color: #111111;
 }
 
 #msgField{
     -fx-font-size: 15;
     -fx-font-family: "Lucida Console";
-    -fx-text-fill: #00ff00;
+    -fx-text-fill: #ffffff;
     -fx-background-color: #111111;
 }
 

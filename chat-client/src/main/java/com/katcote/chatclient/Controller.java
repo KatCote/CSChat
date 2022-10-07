@@ -36,4 +36,17 @@ public class Controller implements Initializable {
         Platform.exit();
     }
 
+    /*
+    public void setWhiteTheme(){
+        Main.cssPath = "white-theme.css";
+        System.out.println(Main.cssPath);
+    }
+
+    public void setDarkTheme(){
+        Main.cssPath = "dark-theme.css";
+        System.out.println(Main.cssPath);
+    }
+
+ */
+
 }

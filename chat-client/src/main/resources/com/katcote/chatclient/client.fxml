@@ -6,7 +6,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextField?>
 
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
 <VBox fx:id="VBox" fx:controller="com.katcote.chatclient.Controller" xmlns:fx="http://javafx.com/fxml">
+<!--    <MenuBar >
+        <Menu text="View">
+            <Menu text="Theme">
+                <MenuItem text="White" onAction="#setWhiteTheme"/>
+                <MenuItem text="Dark" onAction="#setDarkTheme"/>
+            </Menu>
+        </Menu>
+    </MenuBar>-->
     <TextArea fx:id="mainArea" editable="false" VBox.vgrow="ALWAYS"/>
     <HBox>
         <TextField fx:id="msgField" HBox.hgrow="ALWAYS" promptText="Сообщение" onAction="#sendMsgAction"/>

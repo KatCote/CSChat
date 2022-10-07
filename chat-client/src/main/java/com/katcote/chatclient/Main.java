@@ -9,9 +9,12 @@ import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 public class Main extends Application {
+
+    //public static String cssPath = "dark-theme.css";
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -24,6 +27,7 @@ public class Main extends Application {
 
         int WIDTH = Integer.parseInt(props.getProperty("W_WIDTH"));
         int HEIGHT = Integer.parseInt(props.getProperty("W_HEIGHT"));
+        String defaultTheme = props.getProperty("DEFAULT_THEME");
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
         Parent root = fxmlLoader.load();
@@ -34,7 +38,7 @@ public class Main extends Application {
         Scene scene = new Scene(root, WIDTH, HEIGHT);
         primaryStage.getIcons().add(new Image("D://IDEA/CSChat/src/icon.png"));
         primaryStage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("dark-theme.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(defaultTheme)).toExternalForm());
         primaryStage.show();
     }
 

@@ -101,9 +101,8 @@ public class ClientCryptography {
 
         @Override
         protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-            out.add(msg.toString(charset).replace("\n", "").split(" ")[0] +
-                    msg.toString(charset).replace("\n", "").split(" ")[1] + " " +
-                    decrypt(msg.toString(charset).replace("\n", "").split(" ")[2]) + "\n");
+            out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
+                    decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
         }
     }
 

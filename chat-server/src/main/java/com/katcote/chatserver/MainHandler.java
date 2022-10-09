@@ -32,10 +32,6 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
                 ctx.writeAndFlush("Name can't end with space\n");
                 return;
             }
-            if(msg.split("\\s", 2)[1].toLowerCase().equals("server")){
-                ctx.writeAndFlush("Not today, dude");
-                return;
-            }
             String clientNameBuf = clientName;
             clientName = msg.split("\\s", 2)[1];
             ctx.writeAndFlush("Done\n");

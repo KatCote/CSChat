@@ -5,10 +5,7 @@ import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -16,13 +13,8 @@ import java.util.Properties;
 public class Network {
 
     private SocketChannel sChannel;
-
-
     private static String HOST;
     private static int PORT;
-
-
-
 
     public Network(CallBack onMsgReceivedCallBack){
 
@@ -47,8 +39,8 @@ public class Network {
                             protected void initChannel(SocketChannel socketChannel) throws Exception {
                                 sChannel = socketChannel;
                                 socketChannel.pipeline().addLast(
-                                        new StringDecoder(),
-                                        new StringEncoder(),
+                                        new ClientCryptography.StringDecoder(),
+                                        new ClientCryptography.StringEncoder(),
                                         new ClientHandler(onMsgReceivedCallBack));
                             }
                         });

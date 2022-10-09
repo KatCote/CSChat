@@ -16,13 +16,15 @@ public class Network {
     private static String HOST;
     private static int PORT;
 
-    public Network(CallBack onMsgReceivedCallBack){
+    public Network(CallBack onMsgReceivedCallBack) {
 
         Properties props = new Properties();
 
         try {
             props.load(new FileInputStream("config.ini"));
-        } catch (IOException e) {e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         HOST = props.getProperty("HOST");
         PORT = Integer.parseInt(props.getProperty("PORT"));
@@ -63,7 +65,7 @@ public class Network {
         sChannel.close();
     }
 
-    public void sendMessage(String str){
+    public void sendMessage(String str) {
         sChannel.writeAndFlush(str);
     }
 }

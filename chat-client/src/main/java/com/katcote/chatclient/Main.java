@@ -17,13 +17,15 @@ public class Main extends Application {
     //public static String cssPath = "dark-theme.css";
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         Properties props = new Properties();
 
         try {
             props.load(new FileInputStream("config.ini"));
-        } catch (IOException e) {e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         int WIDTH = Integer.parseInt(props.getProperty("W_WIDTH"));
         int HEIGHT = Integer.parseInt(props.getProperty("W_HEIGHT"));

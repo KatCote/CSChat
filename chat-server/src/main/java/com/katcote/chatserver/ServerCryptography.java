@@ -17,16 +17,10 @@ public class ServerCryptography {
 
         private final Charset charset;
 
-        /**
-         * Creates a new instance with the current system character set.
-         */
         public StringEncoder() {
             this(Charset.defaultCharset());
         }
 
-        /**
-         * Creates a new instance with the specified character set.
-         */
         public StringEncoder(Charset charset) {
             this.charset = ObjectUtil.checkNotNull(charset, "charset");
         }
@@ -43,19 +37,12 @@ public class ServerCryptography {
 
     public static class StringDecoder extends MessageToMessageDecoder<ByteBuf> {
 
-        // TODO Use CharsetDecoder instead.
         private final Charset charset;
 
-        /**
-         * Creates a new instance with the current system character set.
-         */
         public StringDecoder() {
             this(Charset.defaultCharset());
         }
 
-        /**
-         * Creates a new instance with the specified character set.
-         */
         public StringDecoder(Charset charset) {
             this.charset = ObjectUtil.checkNotNull(charset, "charset");
         }

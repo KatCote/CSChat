@@ -18,39 +18,39 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
         System.out.println("Client is connected: " + ctx);
         channelsList.add(ctx.channel());
         clientName = "Client #" + newClientIndex;
-        sysMessage((clientName + " join\n"));
+        //sysMessage((clientName + " join\n"));
         newClientIndex++;
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        if(msg.isBlank()){
+        if (msg.isBlank()) {
             return;
         }
-        if(msg.startsWith("/changename ")){
-            if(msg.endsWith(" ")){
-                ctx.writeAndFlush("Name can't end with space\n");
+        if (msg.startsWith("/changename ")) {
+            if (msg.endsWith(" ")) {
+                //ctx.writeAndFlush("Name can't end with space\n");
                 return;
             }
             String clientNameBuf = clientName;
             clientName = msg.split("\\s", 2)[1];
             ctx.writeAndFlush("Done\n");
-            sysMessage(clientNameBuf + " changed name to " + clientName + "\n");
+            //sysMessage(clientNameBuf + " changed name to " + clientName + "\n");
             return;
         }
         broadcastMessage(msg, clientName);
     }
 
-    public void sysMessage(String msg){
-        for(io.netty.channel.Channel c : channelsList){
+    public void sysMessage(String msg) {
+        for (io.netty.channel.Channel c : channelsList) {
             c.writeAndFlush(msg);
         }
     }
 
-    public void broadcastMessage(String msg, String clientName){
-        System.out.println(String.format("%s: %s [%s]", new java.util.Date() , msg, clientName));
+    public void broadcastMessage(String msg, String clientName) {
+        System.out.println(String.format("%s: %s [%s]", new java.util.Date(), msg, clientName));
         String out = String.format("[%s]: %s\n", clientName, msg);
-        for(io.netty.channel.Channel c : channelsList){
+        for (io.netty.channel.Channel c : channelsList) {
             c.writeAndFlush(out);
         }
     }

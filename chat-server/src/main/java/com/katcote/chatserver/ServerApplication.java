@@ -21,20 +21,22 @@ public class ServerApplication {
         try {
             props.load(new FileInputStream("config.ini"));
         } catch (
-                IOException e) {e.printStackTrace();}
+                IOException e) {
+            e.printStackTrace();
+        }
 
         int PORT = Integer.parseInt(props.getProperty("PORT"));
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
-        try{
+        try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel socketChannel){
+                        protected void initChannel(SocketChannel socketChannel) {
                             socketChannel.pipeline().addLast(
                                     new ServerCryptography.StringDecoder(),
                                     new ServerCryptography.StringEncoder(),
@@ -43,7 +45,7 @@ public class ServerApplication {
                     });
             ChannelFuture future = b.bind(PORT).sync();
             future.channel().closeFuture().sync();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             bossGroup.shutdownGracefully();

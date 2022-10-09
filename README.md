@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v0.7.0-yellowgreen" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.0.0-blue" alt="Patch">
    <img src="https://img.shields.io/badge/Java-v18.0.2-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
@@ -13,7 +13,7 @@
 Client-Server Chat platform with encryption based on Netty.
 Project in progress.
 
-**Has not encryption now**
+**Works on AES encryption.**
 
 ## Documentation
 
@@ -29,9 +29,10 @@ Project run on Java 18 and contains all the necessary libraries.
 
 `chat-client` - client platform with "/" commads to server. Has GUI with Dark CSS Style (it is not CMD).
 
-Commands:
+Commands: 
 
 `/changename` - Change client name to NotNull (or space at all) for all clients and on a server.
+(not working after 1.0.0 Patch, will be soon)
 
 ## Developers
 

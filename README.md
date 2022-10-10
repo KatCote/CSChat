@@ -37,6 +37,7 @@ Commands:
 ## Developers
 
 - [KatCote](https://github.com/KatCote)
+- [Veslo](https://github.com/vadiek)
 
 ## License
 

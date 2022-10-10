@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.1.0-success" alt="Patch">
-   <img src="https://img.shields.io/badge/Java-v18.0.2-orange" alt="Java">
+   <img src="https://img.shields.io/badge/Patch-v1.1.1-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
 
@@ -17,7 +17,7 @@ Project in progress.
 
 ## Documentation
 
-Project run on Java 18 and contains all the necessary libraries.
+Project run on Java 19 and contains all the necessary libraries.
 
 `Config.ini` - has a ip, port, client window size and default theme changes.
 

@@ -38,7 +38,9 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(event -> controller.exitAction());
         primaryStage.setTitle("CSChat System(R)");
         Scene scene = new Scene(root, WIDTH, HEIGHT);
-        primaryStage.getIcons().add(new Image("D://IDEA/CSChat/src/icon.png"));
+        primaryStage.getIcons().add(new Image(
+                "D://IDEA/CSChat/chat-client/src/main/resources/com/katcote/chatclient/images/icon.png")
+        );
         primaryStage.setScene(scene);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(defaultTheme)).toExternalForm());
         primaryStage.show();

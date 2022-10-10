@@ -32,9 +32,8 @@ public class ClientCryptography {
             return secret;
         }
 
-        private static String encrypt(String input) throws NoSuchPaddingException,
-                NoSuchAlgorithmException, InvalidKeyException, BadPaddingException,
-                IllegalBlockSizeException, InvalidKeySpecException {
+        private static String encrypt(String input) throws NoSuchPaddingException, NoSuchAlgorithmException,
+                InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
 
             String algorithm = "AES";
             SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", "QWERTY");
@@ -47,11 +46,11 @@ public class ClientCryptography {
 
         private final Charset charset;
 
-        public StringEncoder() throws NoSuchAlgorithmException, InvalidKeySpecException {
+        public StringEncoder() {
             this(Charset.defaultCharset());
         }
 
-        public StringEncoder(Charset charset) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        public StringEncoder(Charset charset) {
             this.charset = ObjectUtil.checkNotNull(charset, "charset");
         }
 

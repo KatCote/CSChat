@@ -52,7 +52,7 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>20-ea+3</version>
+            <version>18-ea+2</version>
         </dependency>
 
         <dependency>

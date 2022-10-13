@@ -1,9 +1,9 @@
 <p align="center">
-      <img src="https://i.ibb.co/rZF2rhn/CSChat2.png" width="726">
+      <img src="https://i.ibb.co/rZF2rhn/CSChat3.png" width="726">
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.1.2-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.1.3-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>

@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.1.1-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.1.2-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
@@ -32,7 +32,6 @@ Project run on Java 19 and contains all the necessary libraries.
 Commands: 
 
 `/changename` - Change client name to NotNull (or space at all) for all clients and on a server.
-(not working after 1.0.0 Patch, will be soon)
 
 ## Developers
 

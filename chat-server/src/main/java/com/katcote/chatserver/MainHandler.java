@@ -24,20 +24,18 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        /* if (msg.isBlank()) {
+        if (msg.isBlank()) {
             return;
         }
         if (msg.startsWith("/changename ")) {
             if (msg.endsWith(" ")) {
-                ctx.writeAndFlush("Name can't end with space\n");
                 return;
             }
             String clientNameBuf = clientName;
             clientName = msg.split("\\s", 2)[1];
-            ctx.writeAndFlush("Done\n");
-            sysMessage(clientNameBuf + " changed name to " + clientName + "\n");
+            sysMessage("[SERVER_MSG]" + clientNameBuf + " changed name to " + clientName + "\n");
             return;
-        } */
+        }
         broadcastMessage(msg, clientName);
     }
 

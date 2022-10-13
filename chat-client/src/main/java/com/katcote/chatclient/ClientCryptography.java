@@ -60,6 +60,14 @@ public class ClientCryptography {
                 return;
             }
 
+            if (msg.toString().startsWith("/changename ")){
+                if (msg.toString().endsWith(" ")) {
+                    return;
+                }
+                out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
+                return;
+            }
+
             out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(encrypt((String) msg)), charset));
         }
     }
@@ -100,6 +108,10 @@ public class ClientCryptography {
 
         @Override
         protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
+            if (msg.toString(charset).startsWith("[SERVER_MSG]")){
+                out.add(msg.toString(charset).substring(12) + "\n");
+                return;
+            }
             out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
                     decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
         }

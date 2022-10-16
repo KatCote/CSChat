@@ -109,7 +109,7 @@ public class ClientCryptography {
         @Override
         protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
             if (msg.toString(charset).startsWith("[SERVER_MSG]")){
-                out.add(msg.toString(charset).substring(12) + "\n");
+                out.add("\n" + msg.toString(charset).substring(12) + "\n");
                 return;
             }
             out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +

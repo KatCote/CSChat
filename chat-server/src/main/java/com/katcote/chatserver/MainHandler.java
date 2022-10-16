@@ -18,7 +18,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
         System.out.println("Client is connected: " + ctx);
         channelsList.add(ctx.channel());
         clientName = "Client #" + newClientIndex;
-        //sysMessage((clientName + " join\n"));
+        sysMessage(("[SERVER_MSG]" + clientName + " join\n"));
         newClientIndex++;
     }
 

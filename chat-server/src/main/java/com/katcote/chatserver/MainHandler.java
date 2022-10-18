@@ -24,15 +24,24 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        if (msg.isBlank()) {
-            return;
+        switch (msg.split(" ")[0]) {
+            case "/changename " -> {/* New command system, will be added soon */}
         }
         if (msg.startsWith("/changename ")) {
-            if (msg.endsWith(" ")) {
-                return;
-            }
             String clientNameBuf = clientName;
-            clientName = msg.split("\\s", 2)[1];
+            String preClientName = msg.split("\\s", 2)[1];
+
+            if (preClientName.startsWith(" ")) {
+                while (preClientName.startsWith(" ")) {
+                    preClientName = preClientName.substring(1);
+                }
+            }
+
+            System.out.println(preClientName + " " + msg);
+
+            clientName = preClientName;
+
+            System.out.println(clientName + " " + clientNameBuf);
             sysMessage("[SERVER_MSG]" + clientNameBuf + " changed name to " + clientName + "\n");
             return;
         }

@@ -56,14 +56,27 @@ public class ClientCryptography {
 
         @Override
         protected void encode(ChannelHandlerContext ctx, CharSequence msg, List<Object> out) throws Exception {
-            if (msg.length() == 0) {
+            if (msg.toString().isBlank()) {
                 return;
             }
 
-            if (msg.toString().startsWith("/changename ")){
-                if (msg.toString().endsWith(" ")) {
-                    return;
+            if (msg.toString().endsWith(" ")) {
+                while (msg.toString().endsWith(" ")){
+                    msg = msg.toString().substring(0, msg.length()-1);
                 }
+            }
+
+            if (msg.toString().startsWith(" ")) {
+                while (msg.toString().startsWith(" ")){
+                    msg = msg.toString().substring(1);
+                }
+            }
+
+            switch (msg.toString().split(" ")[0]) {
+                case "/changename " -> {/* New command system, will be added soon */}
+            }
+
+            if (msg.toString().startsWith("/changename ")){
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }

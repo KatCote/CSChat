@@ -1,6 +1,7 @@
 .root {
     -fx-base: #111111;
     -fx-faint-focus-color: #111111;
+    -fx-background-color: #111111;
 }
 
 .MenuBar{
@@ -15,7 +16,7 @@
 }
 
 .menu-item:focused {
-     -fx-background-color: darkgray;
+     -fx-background-color: #111111;
 }
 
 
@@ -41,7 +42,7 @@
 
 #VBox{
     -fx-background-color: #111111;
+    -fx-base: #111111;
     -fx-border-color: #111111;
     -fx-background-insets: 0;
-
 }

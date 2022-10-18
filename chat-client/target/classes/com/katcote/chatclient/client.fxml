@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.TextField?>
-
-<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<VBox fx:id="VBox" fx:controller="com.katcote.chatclient.Controller" xmlns:fx="http://javafx.com/fxml">
-<!--    <MenuBar >
-        <Menu text="View">
-            <Menu text="Theme">
-                <MenuItem text="White" onAction="#setWhiteTheme"/>
-                <MenuItem text="Dark" onAction="#setDarkTheme"/>
-            </Menu>
-        </Menu>
-    </MenuBar>-->
-    <TextArea fx:id="mainArea" editable="false" VBox.vgrow="ALWAYS"/>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="VBox" stylesheets="@dark-theme.css"
+      xmlns="http://javafx.com/javafx/19"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.katcote.chatclient.Controller">
+
+    <TextArea fx:id="mainArea" editable="false" VBox.vgrow="ALWAYS" />
     <HBox>
-        <TextField fx:id="msgField" HBox.hgrow="ALWAYS" promptText="Сообщение" onAction="#sendMsgAction"/>
-        <Button text="Отправить" onAction="#sendMsgAction"/>
+        <TextField fx:id="msgField" onAction="#sendMsgAction" promptText="Сообщение" HBox.hgrow="ALWAYS" />
+        <Button onAction="#sendMsgAction" text="Отправить" />
     </HBox>
+
 </VBox>

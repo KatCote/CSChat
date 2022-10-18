@@ -39,12 +39,15 @@ public class Controller implements Initializable {
 
     public void sendMsgAction(ActionEvent actionEvent) {
         network.sendMessage(msgField.getText());
+        if (msgField.getText().startsWith("/exit")){
+            Platform.exit();
+        }
         msgField.clear();
         msgField.requestFocus();
     }
 
     public void sendLoginAction(ActionEvent actionEvent){
-        //network.sendMessage("/changename " + loginField.getText());
+        network.sendMessage("/changename " + loginField.getText());
         loginField.clear();
     }
 

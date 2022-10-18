@@ -72,7 +72,8 @@ public class ClientCryptography {
                 }
             }
 
-            if (serverCommand(msg, "/changename ")){
+            if (serverCommand(msg, "/changename ") ||
+                    serverCommand(msg, "/exit")){
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }

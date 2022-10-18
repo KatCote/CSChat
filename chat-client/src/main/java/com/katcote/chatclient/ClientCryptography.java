@@ -72,16 +72,16 @@ public class ClientCryptography {
                 }
             }
 
-            switch (msg.toString().split(" ")[0]) {
-                case "/changename " -> {/* New command system, will be added soon */}
-            }
-
-            if (msg.toString().startsWith("/changename ")){
+            if (serverCommand(msg, "/changename ")){
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }
 
             out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(encrypt((String) msg)), charset));
+        }
+
+        private boolean serverCommand(CharSequence msg, String command) {
+            return msg.toString().startsWith(command);
         }
     }
 

@@ -10,7 +10,7 @@
 
 ## About
 
-Office Client-Server Chat platform with encryption based on Netty.
+Client-Server Chat platform with encryption based on Netty.
 Project in progress.
 
 **Works on AES encryption.**

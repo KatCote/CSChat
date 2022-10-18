@@ -82,7 +82,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.katcote.chatclient/com.katcote.chatclient.Main</mainClass>
+                            <mainClass>com.katcote.chatclient/com.katcote.chatclient.ClientApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>

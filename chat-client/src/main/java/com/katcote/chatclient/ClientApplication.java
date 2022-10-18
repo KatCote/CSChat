@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Objects;
 import java.util.Properties;
 
-public class Main extends Application {
+public class ClientApplication extends Application {
 
     //public static String cssPath = "dark-theme.css";
 
@@ -30,7 +30,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        File currentClass = new File(URLDecoder.decode(Main.class
+        File currentClass = new File(URLDecoder.decode(ClientApplication.class
                 .getProtectionDomain()
                 .getCodeSource()
                 .getLocation()

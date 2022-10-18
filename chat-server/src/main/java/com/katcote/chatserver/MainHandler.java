@@ -37,11 +37,9 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
                 }
             }
 
-            System.out.println(preClientName + " " + msg);
-
             clientName = preClientName;
 
-            System.out.println(clientName + " " + clientNameBuf);
+            System.out.println(clientName + " -> " + clientNameBuf);
             sysMessage("[SERVER_MSG]" + clientNameBuf + " changed name to " + clientName + "\n");
             return;
         }

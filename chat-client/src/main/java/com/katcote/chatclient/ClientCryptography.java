@@ -36,7 +36,7 @@ public class ClientCryptography {
                 InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
 
             String algorithm = "AES";
-            SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", "QWERTY");
+            SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", ")Gu[909]sdfg90df");
 
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -100,7 +100,7 @@ public class ClientCryptography {
                 BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, InvalidKeyException {
 
             String algorithm = "AES";
-            SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", "QWERTY");
+            SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", ")Gu[909]sdfg90df");
 
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.DECRYPT_MODE, key);

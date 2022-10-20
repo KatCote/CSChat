@@ -52,6 +52,7 @@ public class Controller implements Initializable {
     }
 
     public void exitAction() {
+        network.sendMessage("/exit");
         network.close();
         Platform.exit();
     }

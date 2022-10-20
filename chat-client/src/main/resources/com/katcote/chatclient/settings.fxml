@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="LoginVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="300.0" stylesheets="@dark-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatclient.SettingsController">
+   <children>
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER" translateY="-25.0">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <TextField alignment="CENTER" maxWidth="-Infinity" promptText="Username" stylesheets="@dark-theme.css"/> <!-- onAction="#sendLoginAction" -->
+   </children>
+</VBox>

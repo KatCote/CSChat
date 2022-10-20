@@ -9,10 +9,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="VBox" stylesheets="@dark-theme.css"
-      xmlns="http://javafx.com/javafx/19"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.katcote.chatclient.Controller">
+<VBox fx:id="VBox" stylesheets="@dark-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatclient.Controller">
+   <MenuBar>
+     <menus>
+       <Menu mnemonicParsing="false" text="Edit">
+         <items>
+           <MenuItem mnemonicParsing="false" text="Settings" /> <!-- onAction="#showSettingsMenu"-->
+         </items>
+       </Menu>
+       <Menu mnemonicParsing="false" text="Help">
+         <items>
+           <MenuItem mnemonicParsing="false" text="About" />
+         </items>
+       </Menu>
+     </menus>
+   </MenuBar>
 
     <TextArea fx:id="mainArea" editable="false" VBox.vgrow="ALWAYS" />
     <HBox>

@@ -24,8 +24,6 @@ public class SettingsController {
     public void showDialog() {
         try {
 
-            System.out.println("B");
-
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
             Parent root = fxmlLoader.load();
@@ -42,8 +40,8 @@ public class SettingsController {
     }
 
     public void sendLoginAction(ActionEvent actionEvent) {
-        System.out.println("A");
-        network.sendMessage("/changename asd");
+        network.sendMessage("/changename " + loginField.getText());
+        loginField.clear();
     }
 
 }

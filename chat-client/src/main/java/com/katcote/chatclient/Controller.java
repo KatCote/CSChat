@@ -35,13 +35,11 @@ public class Controller implements Initializable {
     }
 
     public void showSettingsMenu(ActionEvent actionEvent){
-        System.out.println("C");
         SettingsController settingsController = new SettingsController();
         settingsController.showDialog();
     }
 
     public void sendMsgAction(ActionEvent actionEvent) {
-        System.out.println("D");
         network.sendMessage(msgField.getText());
         if (msgField.getText().startsWith("/exit")){
             Platform.exit();

@@ -126,12 +126,8 @@ public class ClientCryptography {
                 out.add("\n" + msg.toString(charset).substring(12) + "\n");
                 return;
             }
-            try {
-                out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
-                        decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
-            } catch (ArrayIndexOutOfBoundsException e) {
-                e.printStackTrace();
-            }
+            out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
+                    decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
         }
     }
 

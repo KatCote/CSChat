@@ -12,14 +12,20 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 public class ClientCryptography {
+
+    private static String password = "i1m@qu2d=odz=rH9R&gMUY70e=cc#8vd";
+    private static String salt = "u3=%-BS+i068r62^q|0P!AF6taTn?zAc";
 
     public static class StringEncoder extends MessageToMessageEncoder<CharSequence> {
 
@@ -36,7 +42,7 @@ public class ClientCryptography {
                 InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
 
             String algorithm = "AES";
-            SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", ")Gu[909]sdfg90df");
+            SecretKey key = getKeyFromPassword(password, salt);
 
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -101,7 +107,7 @@ public class ClientCryptography {
                 BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, InvalidKeyException {
 
             String algorithm = "AES";
-            SecretKey key = getKeyFromPassword("bY87T*68gG*9b((bn#j8", ")Gu[909]sdfg90df");
+            SecretKey key = getKeyFromPassword(password, salt);
 
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.DECRYPT_MODE, key);

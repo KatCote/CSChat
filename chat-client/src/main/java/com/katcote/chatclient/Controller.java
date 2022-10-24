@@ -39,6 +39,10 @@ public class Controller implements Initializable {
         settingsController.showDialog();
     }
 
+    public void aboutWebAction(ActionEvent actionEvent){
+
+    }
+
     public void sendMsgAction(ActionEvent actionEvent) {
         network.sendMessage(msgField.getText());
         if (msgField.getText().startsWith("/exit")){

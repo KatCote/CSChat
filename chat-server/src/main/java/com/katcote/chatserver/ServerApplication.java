@@ -11,12 +11,18 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class ServerApplication {
+    public static String MOTD = "CSChat System v1.3.0 Beta";
 
     public static void main(String[] args) {
 
         Properties props = new Properties();
+
+        Scanner sc = new Scanner(System.in);
+
+        //MOTD = sc.nextLine();
 
         try {
             props.load(new FileInputStream("config.ini"));

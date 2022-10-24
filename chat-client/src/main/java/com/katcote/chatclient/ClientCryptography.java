@@ -3,6 +3,7 @@ package com.katcote.chatclient;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.DecoderException;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import io.netty.handler.codec.MessageToMessageEncoder;
 import io.netty.util.internal.ObjectUtil;
@@ -21,6 +22,7 @@ import java.security.spec.KeySpec;
 import java.util.Base64;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ClientCryptography {
 
@@ -78,8 +80,9 @@ public class ClientCryptography {
                 }
             }
 
-            if (serverCommand(msg, "/changename ") ||
-                    serverCommand(msg, "/exit")){
+            if (serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/changename ") ||
+                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/exit") ||
+                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/motd")){
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }
@@ -132,8 +135,15 @@ public class ClientCryptography {
                 out.add("\n" + msg.toString(charset).substring(12) + "\n");
                 return;
             }
-            out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
-                    decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
+            try {
+                out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
+                        decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
+
+            } catch (DecoderException e) {
+                e.printStackTrace();
+            } catch (ArrayIndexOutOfBoundsException e){
+                e.printStackTrace();
+            }
         }
     }
 

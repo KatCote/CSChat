@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.2.4-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.3.0-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
@@ -34,6 +34,8 @@ Commands:
 `/changename` - Change client name to NotNull (or space at all) for all clients and on a server.
 
 `/exit` - Exit chat from both sides.
+
+`/motd` - Set MOTD for new clients
 
 ## Developers
 

@@ -6,6 +6,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainHandler extends SimpleChannelInboundHandler<String> {
 
@@ -16,15 +17,16 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Client is connected: " + ctx);
-        channelsList.add(ctx.channel());
+        ctx.writeAndFlush("[SERVER_MSG]" + ServerApplication.MOTD + "\n");
         clientName = "Client #" + newClientIndex;
-        sysMessage(("[SERVER_MSG]" + clientName + " join\n"));
+        sysMessage("[SERVER_MSG]" + clientName + " join\n");
+        channelsList.add(ctx.channel());
         newClientIndex++;
     }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        switch (msg.split(" ")[0]) {
+        switch (msg.split(" ")[0].toLowerCase(Locale.ROOT)) {
             case "/changename" -> {
                 String clientNameBuf = clientName;
                 String preClientName = msg.split("\\s", 2)[1];
@@ -45,6 +47,12 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
                 System.out.println(clientName + " left");
                 sysMessage("[SERVER_MSG]" + clientName + " left\n");
                 ctx.close();
+                return;
+            }
+            case "/motd" -> {
+                System.out.println("MOTD changed to " +  msg.substring(6));
+                ServerApplication.MOTD = msg.substring(6);
+                sysMessage("[SERVER_MSG]" + "New MOTD: " + ServerApplication.MOTD + "\n");
                 return;
             }
         }

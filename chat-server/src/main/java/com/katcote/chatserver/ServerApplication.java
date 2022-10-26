@@ -13,9 +13,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class ServerApplication {
-    public static String MOTD = "CSChat System v1.3.1 Beta";
+
+    public static String MOTD = "CSChat System v1.3.2 Beta";
 
     public static void main(String[] args) {
+
+        new Console.serverConsole().start();
 
         Properties props = new Properties();
 

@@ -7,6 +7,9 @@ import io.netty.handler.codec.DecoderException;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import io.netty.handler.codec.MessageToMessageEncoder;
 import io.netty.util.internal.ObjectUtil;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import javax.crypto.*;
 import javax.crypto.spec.PBEKeySpec;
@@ -38,7 +41,7 @@ public class ClientCryptography {
             return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
         }
 
-        private static String encrypt(String input) throws NoSuchPaddingException, NoSuchAlgorithmException,
+        private synchronized static String encrypt(String input) throws NoSuchPaddingException, NoSuchAlgorithmException,
                 InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
 
             String algorithm = "AES";
@@ -61,7 +64,7 @@ public class ClientCryptography {
         }
 
         @Override
-        protected void encode(ChannelHandlerContext ctx, CharSequence msg, List<Object> out) throws Exception {
+        protected synchronized void encode(ChannelHandlerContext ctx, CharSequence msg, List<Object> out) throws Exception {
             if (msg.toString().isBlank()) {
                 return;
             }
@@ -105,7 +108,7 @@ public class ClientCryptography {
             return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
         }
 
-        private static String decrypt(String cipherText) throws NoSuchPaddingException, NoSuchAlgorithmException,
+        private synchronized static String decrypt(String cipherText) throws NoSuchPaddingException, NoSuchAlgorithmException,
                 BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, InvalidKeyException {
 
             String algorithm = "AES";
@@ -129,8 +132,18 @@ public class ClientCryptography {
         }
 
         @Override
-        protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
+        protected synchronized void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
             if (msg.toString(charset).startsWith("[SERVER_MSG]")){
+
+                if (msg.toString(charset).equals("[SERVER_MSG]Server closed")){
+                    System.out.println("[Server closed]");
+                    //Controller.serverAlert();
+                    wait(5000);
+                    Platform.exit();
+                    return;
+                }
+
+
                 out.add("\n" + msg.toString(charset).substring(12) + "\n");
                 return;
             }

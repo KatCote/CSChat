@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.3.1-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.3.2-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
@@ -25,17 +25,22 @@ Project run on Java 19 and contains all the necessary libraries.
 
 `src` - Resourses for both sides (Client-Server).
 
-`chat-server` - server platform at configs port, ByteBuffer message Client-Server data exchange. Has not GUI.
+`chat-server` - server platform at configs port, ByteBuffer message Client-Server data exchange.
+Has console for CMD or IDE.
 
 `chat-client` - client platform with "/" commads to server. Has GUI with Dark CSS Style (it is not CMD).
 
-Commands: 
+Client commands: 
 
 `/changename` - Change client name to NotNull (or space at all) for all clients and on a server.
 
 `/exit` - Exit chat from both sides.
 
 `/motd` - Set MOTD for new clients
+
+Server commands:
+
+`stop` - Stop the server with close all clients.
 
 ## Developers
 

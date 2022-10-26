@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -11,7 +13,12 @@
         <tabs>
           <Tab text="Client">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Username" />
+                        <TextField fx:id="usernameField" onAction="#setUsername" layoutX="81.0" layoutY="10.0" prefHeight="0.0" prefWidth="149.0" />
+                     </children>
+                  </AnchorPane>
             </content>
           </Tab>
           <Tab text="Config">

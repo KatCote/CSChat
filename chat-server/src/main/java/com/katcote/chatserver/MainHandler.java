@@ -46,6 +46,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
             case "/exit" -> {
                 System.out.println(clientName + " left");
                 sysMessage("[SERVER_MSG]" + clientName + " left\n");
+                channelsList.remove(ctx.channel());
                 ctx.close();
                 return;
             }
@@ -62,6 +63,12 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     public void sysMessage(String msg) {
         for (io.netty.channel.Channel c : channelsList) {
             c.writeAndFlush(msg);
+        }
+    }
+
+    public static void stopServer(){
+        for (io.netty.channel.Channel c : channelsList) {
+            c.writeAndFlush("[SERVER_MSG]" + "Server closed");
         }
     }
 

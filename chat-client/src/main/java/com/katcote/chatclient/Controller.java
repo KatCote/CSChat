@@ -1,18 +1,20 @@
 package com.katcote.chatclient;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    private Network network;
+    private static Network network;
 
     @FXML
     TextField msgField;
@@ -25,9 +27,9 @@ public class Controller implements Initializable {
         network = new Network((args) -> mainArea.appendText((String) args[0]));
     }
 
-    public void showSettingsMenu(ActionEvent actionEvent){
+    public void showSettingsMenu(){
         SettingsController settingsController = new SettingsController();
-        settingsController.showDialog(actionEvent);
+        settingsController.showDialog();
     }
 
     public void sendMsgAction() {
@@ -39,11 +41,19 @@ public class Controller implements Initializable {
         msgField.requestFocus();
     }
 
-    public void aboutWebAction(){
-
+    public static void systemMsgAction(String msg){
+        network.sendMessage(msg);
     }
 
-    public void exitAction() {
+    public void aboutWebAction(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Come back again later", ButtonType.OK);
+        alert.setHeaderText("About will be added soon");
+        alert.setTitle("CSChat Info");
+        alert.initStyle(StageStyle.TRANSPARENT);
+        alert.showAndWait();
+    }
+
+    public static void exitAction() {
         network.sendMessage("/exit");
         network.close();
         Platform.exit();

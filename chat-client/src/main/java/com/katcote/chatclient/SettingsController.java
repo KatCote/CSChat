@@ -1,10 +1,10 @@
 package com.katcote.chatclient;
 
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -13,7 +13,10 @@ import java.io.IOException;
 
 public class SettingsController {
 
-    public void showDialog(ActionEvent actionEvent) {
+    @FXML
+    TextField usernameField;
+
+    public void showDialog() {
         try {
 
             Stage stage = new Stage();
@@ -24,12 +27,17 @@ public class SettingsController {
             stage.setScene(new Scene(root));
             stage.getIcons().add(new Image(ClientApplication.iconURL));
             stage.initModality(Modality.WINDOW_MODAL);
-            //stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+            //stage.initOwner();
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setUsername(){
+        Controller.systemMsgAction("/changename " + usernameField.getText());
+        usernameField.clear();
     }
 
 }

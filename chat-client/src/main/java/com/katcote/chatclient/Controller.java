@@ -36,11 +36,7 @@ public class Controller implements Initializable {
 
     public void showSettingsMenu(ActionEvent actionEvent){
         SettingsController settingsController = new SettingsController();
-        settingsController.showDialog();
-    }
-
-    public void aboutWebAction(ActionEvent actionEvent){
-
+        settingsController.showDialog(actionEvent);
     }
 
     public void sendMsgAction(ActionEvent actionEvent) {
@@ -50,6 +46,10 @@ public class Controller implements Initializable {
         }
         msgField.clear();
         msgField.requestFocus();
+    }
+
+    public void aboutWebAction(ActionEvent actionEvent){
+
     }
 
     public void exitAction() {

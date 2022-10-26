@@ -14,7 +14,7 @@
      <menus>
        <Menu mnemonicParsing="false" text="Edit">
          <items>
-           <MenuItem mnemonicParsing="false" text="Settings" /> <!-- onAction="#showSettingsMenu"-->
+           <MenuItem mnemonicParsing="false" text="Settings" onAction="#showSettingsMenu"/>
          </items>
        </Menu>
        <Menu mnemonicParsing="false" text="Help">

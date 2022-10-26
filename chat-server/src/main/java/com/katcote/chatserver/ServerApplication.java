@@ -14,7 +14,7 @@ import java.util.Properties;
 import java.util.Scanner;
 
 public class ServerApplication {
-    public static String MOTD = "CSChat System v1.3.0 Beta";
+    public static String MOTD = "CSChat System v1.3.1 Beta";
 
     public static void main(String[] args) {
 

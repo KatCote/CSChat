@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -16,12 +17,7 @@ import java.util.ResourceBundle;
 
 public class SettingsController {
 
-    @FXML
-    TextField loginField;
-
-    Network network = new Network(args -> {});
-
-    public void showDialog() {
+    public void showDialog(ActionEvent actionEvent) {
         try {
 
             Stage stage = new Stage();
@@ -30,18 +26,14 @@ public class SettingsController {
             stage.setTitle("Settings");
             stage.setResizable(false);
             stage.setScene(new Scene(root));
-            //stage.initModality(Modality.WINDOW_MODAL);
+            stage.getIcons().add(new Image(ClientApplication.iconURL));
+            stage.initModality(Modality.WINDOW_MODAL);
             //stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void sendLoginAction(ActionEvent actionEvent) {
-        network.sendMessage("/changename " + loginField.getText());
-        loginField.clear();
     }
 
 }

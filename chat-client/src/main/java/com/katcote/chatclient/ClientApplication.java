@@ -19,6 +19,7 @@ import java.util.Properties;
 public class ClientApplication extends Application {
 
     //public static String cssPath = "dark-theme.css";
+    public static String iconURL;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -39,7 +40,7 @@ public class ClientApplication extends Application {
 
         String classDirectory = currentClass.getParent();
         String urlBase = classDirectory.substring(0, classDirectory.length()-26);
-        String iconURL = urlBase.split(":")[0] +
+        iconURL = urlBase.split(":")[0] +
                 ":/" + urlBase.substring(2).replaceAll("\\\\", "/") +
                 "/CSChat/chat-client/src/main/resources/com/katcote/chatclient/images/icon.png";
 

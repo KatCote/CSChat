@@ -10,12 +10,12 @@ import java.util.Locale;
 
 public class MainHandler extends SimpleChannelInboundHandler<String> {
 
-    private static final List<Channel> channelsList = new ArrayList<io.netty.channel.Channel>();
+    private static final List<Channel> channelsList = new ArrayList<>();
     private String clientName;
     private static int newClientIndex = 1;
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) {
         System.out.println("Client is connected: " + ctx);
         ctx.writeAndFlush("[SERVER_MSG]" + ServerApplication.MOTD + "\n");
         clientName = "Client #" + newClientIndex;
@@ -25,7 +25,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         switch (msg.split(" ")[0].toLowerCase(Locale.ROOT)) {
             case "/changename" -> {
                 String clientNameBuf = clientName;
@@ -66,7 +66,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     }
 
     public void broadcastMessage(String msg, String clientName) {
-        System.out.println(String.format("%s: %s [%s]", new java.util.Date(), msg, clientName));
+        System.out.printf("%s: %s [%s]%n", new java.util.Date(), msg, clientName);
         String out = String.format("[%s]: %s\n", clientName, msg);
         for (io.netty.channel.Channel c : channelsList) {
             c.writeAndFlush(out);
@@ -74,7 +74,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         System.out.println(("Client " + clientName + " is closed."));
         sysMessage(clientName + " left\n");
         channelsList.remove(ctx.channel());

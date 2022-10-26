@@ -5,14 +5,14 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 public class ClientHandler extends SimpleChannelInboundHandler<String> {
 
-    private CallBack onMsgReceivedCallBack;
+    private final CallBack onMsgReceivedCallBack;
 
     public ClientHandler(CallBack onMsgReceivedCallBack) {
         this.onMsgReceivedCallBack = onMsgReceivedCallBack;
     }
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         if (onMsgReceivedCallBack != null) {
             onMsgReceivedCallBack.callback(msg);
         }
@@ -20,7 +20,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         ctx.close();
         cause.printStackTrace();
     }

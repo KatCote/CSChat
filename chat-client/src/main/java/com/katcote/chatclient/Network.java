@@ -38,7 +38,7 @@ public class Network {
                         .channel(NioSocketChannel.class)
                         .handler(new ChannelInitializer<SocketChannel>() {
                             @Override
-                            protected void initChannel(SocketChannel socketChannel) throws Exception {
+                            protected void initChannel(SocketChannel socketChannel) {
                                 sChannel = socketChannel;
                                 socketChannel.pipeline().addLast(
                                         new ClientCryptography.StringDecoder(),

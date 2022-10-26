@@ -26,7 +26,7 @@ public class ServerCryptography {
         }
 
         @Override
-        protected void encode(ChannelHandlerContext ctx, CharSequence msg, List<Object> out) throws Exception {
+        protected void encode(ChannelHandlerContext ctx, CharSequence msg, List<Object> out) {
             if (msg.length() == 0) {
                 return;
             }
@@ -48,7 +48,7 @@ public class ServerCryptography {
         }
 
         @Override
-        protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
+        protected void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) {
             out.add(msg.toString(charset));
         }
     }

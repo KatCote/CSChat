@@ -13,38 +13,36 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Base64;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class ClientCryptography {
 
-    private static String password = "i1m@qu2d=odz=rH9R&gMUY70e=cc#8vd";
-    private static String salt = "u3=%-BS+i068r62^q|0P!AF6taTn?zAc";
+    private static final String password = "i1m@qu2d=odz=rH9R&gMUY70e=cc#8vd";
+    private static final String salt = "u3=%-BS+i068r62^q|0P!AF6taTn?zAc";
 
     public static class StringEncoder extends MessageToMessageEncoder<CharSequence> {
 
-        private static SecretKey getKeyFromPassword(String password, String salt)
+        private static SecretKey getKeyFromPassword()
                 throws NoSuchAlgorithmException, InvalidKeySpecException {
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 256);
-            SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
-            return secret;
+            KeySpec spec = new PBEKeySpec(
+                    ClientCryptography.password.toCharArray(),
+                    ClientCryptography.salt.getBytes(), 65536, 256);
+            return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
         }
 
         private static String encrypt(String input) throws NoSuchPaddingException, NoSuchAlgorithmException,
                 InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException {
 
             String algorithm = "AES";
-            SecretKey key = getKeyFromPassword(password, salt);
+            SecretKey key = getKeyFromPassword();
 
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -97,20 +95,21 @@ public class ClientCryptography {
 
     public static class StringDecoder extends MessageToMessageDecoder<ByteBuf> {
 
-        private static SecretKey getKeyFromPassword(String password, String salt)
+        private static SecretKey getKeyFromPassword()
                 throws NoSuchAlgorithmException, InvalidKeySpecException {
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 65536, 256);
-            SecretKey secret = new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
-            return secret;
+            KeySpec spec = new PBEKeySpec(
+                    ClientCryptography.password.toCharArray(),
+                    ClientCryptography.salt.getBytes(), 65536, 256);
+            return new SecretKeySpec(factory.generateSecret(spec).getEncoded(), "AES");
         }
 
         private static String decrypt(String cipherText) throws NoSuchPaddingException, NoSuchAlgorithmException,
                 BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, InvalidKeyException {
 
             String algorithm = "AES";
-            SecretKey key = getKeyFromPassword(password, salt);
+            SecretKey key = getKeyFromPassword();
 
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.DECRYPT_MODE, key);
@@ -139,9 +138,7 @@ public class ClientCryptography {
                 out.add(msg.toString(charset).replace("\n", "").split(": ")[0] + ": " +
                         decrypt(msg.toString(charset).replace("\n", "").split(": ")[1]) + "\n");
 
-            } catch (DecoderException e) {
-                e.printStackTrace();
-            } catch (ArrayIndexOutOfBoundsException e){
+            } catch (DecoderException | ArrayIndexOutOfBoundsException e) {
                 e.printStackTrace();
             }
         }

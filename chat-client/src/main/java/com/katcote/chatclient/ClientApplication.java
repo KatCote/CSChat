@@ -41,19 +41,19 @@ public class ClientApplication extends Application {
         String urlBase = classDirectory.substring(0, classDirectory.length()-26);
         iconURL = urlBase.split(":")[0] +
                 ":/" + urlBase.substring(2).replaceAll("\\\\", "/") +
-                "/CSChat/chat-client/src/main/resources/com/katcote/chatclient/images/icon.png";
+                "/CSChat/chat-client/src/main/resources/com.katcote.chatclient/images/icon.png";
 
         int WIDTH = Integer.parseInt(props.getProperty("W_WIDTH"));
         int HEIGHT = Integer.parseInt(props.getProperty("W_HEIGHT"));
         String defaultTheme = props.getProperty("DEFAULT_THEME");
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
+        System.out.println(getClass().getResource("client.fxml"));
         Parent root = fxmlLoader.load();
-        Controller controller = fxmlLoader.getController();
-
-        primaryStage.setOnCloseRequest(event -> controller.exitAction());
-        primaryStage.setTitle("CSChat System(R)");
         Scene scene = new Scene(root, WIDTH, HEIGHT);
+
+        primaryStage.setOnCloseRequest(event -> Controller.exitAction());
+        primaryStage.setTitle("CSChat System(R)");
         primaryStage.getIcons().add(new Image(iconURL));
         primaryStage.setScene(scene);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(defaultTheme)).toExternalForm());

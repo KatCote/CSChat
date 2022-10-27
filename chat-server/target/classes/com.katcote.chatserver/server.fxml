@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatserver.ServerController">
+   <children>
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="431.0">
+                     <children>
+                        <TableView layoutX="-2.0" layoutY="1.0" prefHeight="344.0" prefWidth="602.0">
+                          <columns>
+                            <TableColumn prefWidth="29.0" text="ID" />
+                            <TableColumn prefWidth="377.0" text="Username" />
+                              <TableColumn prefWidth="99.0" text="Available" />
+                              <TableColumn prefWidth="94.0" text="IP" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Console">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="431.0">
+                     <children>
+                        <TextArea editable="false" layoutY="1.0" prefHeight="344.0" prefWidth="600.0" promptText="CSCHAT SERVER CONSOLE &gt;&gt;&gt;" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <TextField layoutY="375.0" prefHeight="25.0" prefWidth="600.0" promptText="Enter command" />
+   </children>
+</AnchorPane>

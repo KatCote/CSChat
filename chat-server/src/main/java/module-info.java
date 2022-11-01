@@ -6,6 +6,7 @@ module com.katcote.chatserver {
     requires io.netty.common;
     requires javafx.graphics;
     requires javafx.fxml;
+    requires javafx.base;
 
 
     opens com.katcote.chatserver to javafx.fxml;

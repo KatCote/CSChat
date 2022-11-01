@@ -19,7 +19,7 @@ Project in progress.
 
 Project run on Java 19 and contains all the necessary libraries.
 
-`Config.ini` - has a ip, port, client window size and default theme changes.
+`Config.ini` - Contains a ip, port, client window size and default theme changes.
 
 `.idea` - Intellij IDEA run files and Libs.
 

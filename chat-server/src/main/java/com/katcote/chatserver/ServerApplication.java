@@ -23,7 +23,8 @@ import java.util.Properties;
 
 public class ServerApplication{
 
-    public static String MOTD = "CSChat System v1.3.4 Beta";
+    public static String MOTD = "CSChat System v1.3.5 Beta";
+    public static final String MOTD_DEF = MOTD;
 
     public static void main(String[] args) {
 

@@ -11,6 +11,7 @@ import java.util.Locale;
 public class MainHandler extends SimpleChannelInboundHandler<String> {
 
     private static final List<Channel> channelsList = new ArrayList<>();
+    private static final List<String> userNameList = new ArrayList<>();
     private String clientName;
     private static int newClientIndex = 1;
 
@@ -21,6 +22,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
         clientName = "Client #" + newClientIndex;
         sysMessage("[SERVER_MSG]" + clientName + " join\n");
         channelsList.add(ctx.channel());
+        userNameList.add(clientName);
         newClientIndex++;
     }
 
@@ -39,19 +41,30 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
 
                 clientName = preClientName;
 
-                System.out.println(clientNameBuf + " -> " + clientName);
+                System.out.println("USERNAME: " + clientNameBuf + " -> " + clientName);
                 sysMessage("[SERVER_MSG]" + clientNameBuf + " changed name to " + clientName + "\n");
+
+                int bufIndex = userNameList.indexOf(clientNameBuf);
+
+                userNameList.remove(clientNameBuf);
+                userNameList.add(bufIndex, clientName);
+
                 return;
             }
             case "/exit" -> {
                 System.out.println(clientName + " left");
                 sysMessage("[SERVER_MSG]" + clientName + " left\n");
+                userNameList.remove(channelsList.indexOf(ctx.channel()));
                 channelsList.remove(ctx.channel());
                 ctx.close();
                 return;
             }
             case "/motd" -> {
-                System.out.println("MOTD changed to " +  msg.substring(6));
+                if (msg.substring(5).isBlank()) {
+                    sysMessage("[SERVER_MSG]" + ServerApplication.MOTD + "\n");
+                    return;
+                }
+                System.out.println("MOTD: " + ServerApplication.MOTD + " -> " +  msg.substring(6));
                 ServerApplication.MOTD = msg.substring(6);
                 sysMessage("[SERVER_MSG]" + "New MOTD: " + ServerApplication.MOTD + "\n");
                 return;
@@ -60,7 +73,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
         broadcastMessage(msg, clientName);
     }
 
-    public void sysMessage(String msg) {
+    public static void sysMessage(String msg) {
         for (io.netty.channel.Channel c : channelsList) {
             c.writeAndFlush(msg);
         }
@@ -70,6 +83,10 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
         for (io.netty.channel.Channel c : channelsList) {
             c.writeAndFlush("[SERVER_MSG]" + "Server closed");
         }
+    }
+
+    public static List cList(){
+        return userNameList;
     }
 
     public void broadcastMessage(String msg, String clientName) {
@@ -84,6 +101,7 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         System.out.println(("Client " + clientName + " is closed."));
         sysMessage(clientName + " left\n");
+        userNameList.remove(channelsList.indexOf(ctx.channel()));
         channelsList.remove(ctx.channel());
         ctx.close();
     }

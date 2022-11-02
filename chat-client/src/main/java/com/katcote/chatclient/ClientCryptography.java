@@ -138,11 +138,10 @@ public class ClientCryptography {
                 if (msg.toString(charset).equals("[SERVER_MSG]Server closed")){
                     System.out.println("[Server closed]");
                     //Controller.serverAlert();
-                    wait(5000);
-                    Platform.exit();
+                    wait(1000);
+                    Controller.exitAction();
                     return;
                 }
-
 
                 out.add("\n" + msg.toString(charset).substring(12) + "\n");
                 return;

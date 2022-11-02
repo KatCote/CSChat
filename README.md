@@ -44,7 +44,7 @@ Server commands:
 
 `motd` - Set MOTD for new clients
 
-`clist` - List of all clients is this session
+`clist` - List of all clients is this session (online)
 
 ## Developers
 

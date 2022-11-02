@@ -16,7 +16,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<String> {
         if (onMsgReceivedCallBack != null) {
             onMsgReceivedCallBack.callback(msg);
         }
-        System.out.println(msg);
+        System.out.println(msg.replaceAll("\n", ""));
     }
 
     @Override

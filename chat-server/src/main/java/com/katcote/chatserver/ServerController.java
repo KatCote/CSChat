@@ -25,8 +25,8 @@ public class ServerController extends Application {
                 .getPath(), StandardCharsets.UTF_8));
 
         String classDirectory = currentClass.getParent();
-        String urlBase = classDirectory.substring(0, classDirectory.length()-26);
-        String fxmlURLStr = "file:/" +  urlBase.split(":")[0] +
+        String urlBase = classDirectory.substring(0, classDirectory.length() - 26);
+        String fxmlURLStr = "file:/" + urlBase.split(":")[0] +
                 ":" + urlBase.substring(2).replaceAll("\\\\", "/") +
                 "/CSChat/chat-server/target/classes/com.katcote.chatserver/server.fxml";
 
@@ -48,7 +48,7 @@ public class ServerController extends Application {
 
     }
 
-    public static void launchGUI(String[] args){
+    public static void launchGUI(String[] args) {
         launch(args);
     }
 

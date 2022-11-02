@@ -27,25 +27,25 @@ public class Controller implements Initializable {
         network = new Network((args) -> mainArea.appendText((String) args[0]));
     }
 
-    public void showSettingsMenu(){
+    public void showSettingsMenu() {
         SettingsController settingsController = new SettingsController();
         settingsController.showDialog();
     }
 
     public void sendMsgAction() {
         network.sendMessage(msgField.getText());
-        if (msgField.getText().startsWith("/exit")){
+        if (msgField.getText().startsWith("/exit")) {
             Platform.exit();
         }
         msgField.clear();
         msgField.requestFocus();
     }
 
-    public static void systemMsgAction(String msg){
+    public static void systemMsgAction(String msg) {
         network.sendMessage(msg);
     }
 
-    public void aboutWebAction(){
+    public void aboutWebAction() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Come back again later", ButtonType.OK);
         alert.setHeaderText("About will be added soon");
         alert.setTitle("CSChat Info");

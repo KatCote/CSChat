@@ -65,25 +65,26 @@ public class ClientCryptography {
 
         @Override
         protected synchronized void encode(ChannelHandlerContext ctx, CharSequence msg, List<Object> out) throws Exception {
+
             if (msg.toString().isBlank()) {
                 return;
             }
 
             if (msg.toString().endsWith(" ")) {
-                while (msg.toString().endsWith(" ")){
-                    msg = msg.toString().substring(0, msg.length()-1);
+                while (msg.toString().endsWith(" ")) {
+                    msg = msg.toString().substring(0, msg.length() - 1);
                 }
             }
 
             if (msg.toString().startsWith(" ")) {
-                while (msg.toString().startsWith(" ")){
+                while (msg.toString().startsWith(" ")) {
                     msg = msg.toString().substring(1);
                 }
             }
 
             if (serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/changename ") ||
                     serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/exit") ||
-                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/motd")){
+                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/motd")) {
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }
@@ -133,11 +134,10 @@ public class ClientCryptography {
 
         @Override
         protected synchronized void decode(ChannelHandlerContext ctx, ByteBuf msg, List<Object> out) throws Exception {
-            if (msg.toString(charset).startsWith("[SERVER_MSG]")){
+            if (msg.toString(charset).startsWith("[SERVER_MSG]")) {
 
-                if (msg.toString(charset).equals("[SERVER_MSG]Server closed")){
+                if (msg.toString(charset).equals("[SERVER_MSG]Server closed")) {
                     System.out.println("[Server closed]");
-                    //Controller.serverAlert();
                     wait(1000);
                     Controller.exitAction();
                     return;

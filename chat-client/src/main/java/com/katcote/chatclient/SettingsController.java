@@ -35,7 +35,7 @@ public class SettingsController {
         }
     }
 
-    public void setUsername(){
+    public void setUsername() {
         Controller.systemMsgAction("/changename " + usernameField.getText());
         usernameField.clear();
     }

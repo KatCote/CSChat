@@ -38,7 +38,7 @@ public class ClientApplication extends Application {
                 .getPath(), StandardCharsets.UTF_8));
 
         String classDirectory = currentClass.getParent();
-        String urlBase = classDirectory.substring(0, classDirectory.length()-26);
+        String urlBase = classDirectory.substring(0, classDirectory.length() - 26);
         iconURL = urlBase.split(":")[0] +
                 ":/" + urlBase.substring(2).replaceAll("\\\\", "/") +
                 "/CSChat/chat-client/src/main/resources/com.katcote.chatclient/images/icon.png";

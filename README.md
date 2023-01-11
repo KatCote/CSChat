@@ -21,6 +21,8 @@ Project run on Java 19 and contains all the necessary libraries.
 
 `Config.ini` - Contains a ip, port, client window size and default theme changes.
 
+`Settings.ini` - Contains a User settings for Client.
+
 `.idea` - Intellij IDEA run files and Libs.
 
 `src` - Resourses for both sides (Client-Server).
@@ -48,7 +50,7 @@ Server commands:
 
 `clist` - List of all clients is this session (online)
 
-`/help` - Show page with all commands
+`help` - Show page with all commands
 
 ## Developers
 

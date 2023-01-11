@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,8 +18,8 @@ import java.util.Properties;
 
 public class ClientApplication extends Application {
 
-    //public static String cssPath = "dark-theme.css";
     public static String iconURL;
+    public static Window mainApplication;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -57,6 +58,8 @@ public class ClientApplication extends Application {
         primaryStage.setScene(scene);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(defaultTheme)).toExternalForm());
         primaryStage.show();
+
+        mainApplication = primaryStage;
     }
 
     public static void main(String[] args) {

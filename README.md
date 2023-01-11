@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.3.7-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.3.8-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>

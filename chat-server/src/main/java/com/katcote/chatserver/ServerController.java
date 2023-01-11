@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 public class ServerController extends Application {
 
@@ -37,7 +36,6 @@ public class ServerController extends Application {
         System.out.println(fxmlURL);
 
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
-        //fxmlLoader.setLocation(fxmlURL);
 
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 600, 400);

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -18,8 +19,9 @@
                      <children>
                         <Label layoutX="14.0" layoutY="14.0" text="Username" />
                         <TextField fx:id="usernameField" layoutX="81.0" layoutY="10.0" onAction="#setUsername" prefHeight="0.0" prefWidth="149.0" promptText="New Username" />
-                        <CheckBox layoutX="242.0" layoutY="14.0" mnemonicParsing="false" text="Username from Settings" />
-                        <TextField fx:id="settingsUsernameField" layoutX="406.0" layoutY="10.0" onAction="#setUsernameToSettings" prefHeight="0.0" prefWidth="149.0" promptText="Username to Settings" />
+                        <CheckBox fx:id="settingsUsernameCheckbox" disable="true" layoutX="327.0" layoutY="14.0" mnemonicParsing="false" onAction="#setCheckboxToSettings" text="Use static Username" />
+                        <TextField fx:id="settingsUsernameField" layoutX="470.0" layoutY="10.0" onAction="#setUsernameToSettings" prefHeight="0.0" prefWidth="149.0" promptText="Static Username" />
+                        <ToggleButton fx:id="setDefaultUsernameButton" accessibleRole="BUTTON" layoutX="631.0" layoutY="10.0" mnemonicParsing="false" onAction="#setUsernameToDefault" text="Set Default" />
                      </children>
                   </AnchorPane>
             </content>

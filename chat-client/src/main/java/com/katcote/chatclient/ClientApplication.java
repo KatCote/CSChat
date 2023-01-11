@@ -20,6 +20,7 @@ public class ClientApplication extends Application {
 
     public static String iconURL;
     public static Window mainApplication;
+    public static String currentTheme;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -31,6 +32,16 @@ public class ClientApplication extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Properties settings = new Properties();
+
+        try {
+            settings.load(new FileInputStream("Settings.ini"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        currentTheme = settings.getProperty("CURRENT_THEME");
 
         File currentClass = new File(URLDecoder.decode(ClientApplication.class
                 .getProtectionDomain()
@@ -48,6 +59,12 @@ public class ClientApplication extends Application {
         int HEIGHT = Integer.parseInt(props.getProperty("W_HEIGHT"));
         String defaultTheme = props.getProperty("DEFAULT_THEME");
 
+        if(currentTheme.equals("") || currentTheme.equals("default")){
+            currentTheme = defaultTheme;
+        }
+
+        System.out.println(currentTheme);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, WIDTH, HEIGHT);
@@ -56,7 +73,7 @@ public class ClientApplication extends Application {
         primaryStage.setTitle("CSChat System(R)");
         primaryStage.getIcons().add(new Image(iconURL));
         primaryStage.setScene(scene);
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(defaultTheme)).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource(currentTheme)).toExternalForm());
         primaryStage.show();
 
         mainApplication = primaryStage;

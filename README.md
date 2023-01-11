@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.3.9-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.4.0-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
@@ -51,6 +51,8 @@ Server commands:
 `clist` - List of all clients is this session (online)
 
 `help` - Show page with all commands
+
+If You want to use custom CSS Stylesheet you may put it in resources folder and write *Title*.css like current theme to Settings.ini
 
 ## Developers
 

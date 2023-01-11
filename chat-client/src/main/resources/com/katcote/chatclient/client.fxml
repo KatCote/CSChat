@@ -9,17 +9,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="VBox" stylesheets="@dark-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatclient.Controller">
+<VBox fx:id="VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatclient.Controller">
    <MenuBar>
      <menus>
        <Menu mnemonicParsing="false" text="Edit">
          <items>
-           <MenuItem mnemonicParsing="false" text="Settings" onAction="#showSettingsMenu"/>
+           <MenuItem mnemonicParsing="false" onAction="#showSettingsMenu" text="Settings" />
          </items>
        </Menu>
        <Menu mnemonicParsing="false" text="Help">
          <items>
-           <MenuItem mnemonicParsing="false" text="About" onAction="#aboutWebAction"/>
+           <MenuItem mnemonicParsing="false" onAction="#aboutWebAction" text="About" />
          </items>
        </Menu>
      </menus>

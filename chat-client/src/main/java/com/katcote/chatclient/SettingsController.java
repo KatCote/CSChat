@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
 
 public class SettingsController {
@@ -37,13 +38,28 @@ public class SettingsController {
 
         try {
 
+            Properties props = new Properties();
+
+            try {
+                props.load(new FileInputStream("config.ini"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            int WIDTH = Integer.parseInt(props.getProperty("S_WIDTH"));
+            int HEIGHT = Integer.parseInt(props.getProperty("S_HEIGHT"));
+
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("settings.fxml"));
             Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root, WIDTH, HEIGHT);
+
             stage.setTitle("Settings");
             stage.setResizable(false);
-            stage.setScene(new Scene(root));
+            stage.setScene(scene);
             stage.getIcons().add(new Image(ClientApplication.iconURL));
+            scene.getStylesheets().add(Objects.requireNonNull(getClass()
+                    .getResource(ClientApplication.currentTheme)).toExternalForm());
             stage.initModality(Modality.WINDOW_MODAL);
             stage.initOwner(ClientApplication.mainApplication);
             stage.show();
@@ -138,5 +154,41 @@ public class SettingsController {
             e.printStackTrace();
         }
 
+    }
+
+    public static void changeTheme(String theme){
+
+        Properties settings = new Properties();
+
+        try {
+            settings.load(new FileInputStream("Settings.ini"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        settings.setProperty("CURRENT_THEME", theme);
+
+        try {
+            settings.store(new FileOutputStream("Settings.ini"), "Return to default Username");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void setSoftDarkTheme(ActionEvent actionEvent) {
+        changeTheme("dark-theme.css");
+    }
+
+    public void setBightWhiteTheme(ActionEvent actionEvent) {
+        changeTheme("white-theme.css");
+    }
+
+    public void setPinkFloydTheme(ActionEvent actionEvent) {
+        changeTheme("pink-floyd-theme.css");
+    }
+
+    public void setCustomTheme(ActionEvent actionEvent) {
+        changeTheme("custom.css");
     }
 }

@@ -2,16 +2,19 @@
 
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox fx:id="SettnigsVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="720.0" stylesheets="@dark-theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatclient.SettingsController">
+<VBox fx:id="SettnigsVBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatclient.SettingsController">
    <children>
-      <TabPane prefHeight="498.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="498.0" prefWidth="720.0" stylesheets="@white-theme.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Client">
             <content>
@@ -22,13 +25,17 @@
                         <CheckBox fx:id="settingsUsernameCheckbox" disable="true" layoutX="327.0" layoutY="14.0" mnemonicParsing="false" onAction="#setCheckboxToSettings" text="Use static Username" />
                         <TextField fx:id="settingsUsernameField" layoutX="470.0" layoutY="10.0" onAction="#setUsernameToSettings" prefHeight="0.0" prefWidth="149.0" promptText="Static Username" />
                         <ToggleButton fx:id="setDefaultUsernameButton" accessibleRole="BUTTON" layoutX="631.0" layoutY="10.0" mnemonicParsing="false" onAction="#setUsernameToDefault" text="Set Default" />
+                        <MenuButton layoutX="593.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="119.0" text="Theme">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Soft Dark" onAction="#setSoftDarkTheme"/>
+                            <MenuItem mnemonicParsing="false" text="Bight White" onAction="#setBightWhiteTheme"/>
+                              <MenuItem mnemonicParsing="false" text="Pink Floyd" onAction="#setPinkFloydTheme"/>
+                              <MenuItem mnemonicParsing="false" text="Custom" onAction="#setCustomTheme"/>
+                          </items>
+                        </MenuButton>
+                        <Text fill="#4d4d4d" layoutX="7.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GitHub.com/KatCote/CSChat" />
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Config">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
         </tabs>

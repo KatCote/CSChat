@@ -1,12 +1,28 @@
 .root {
     -fx-base: #ffffff;
     -fx-faint-focus-color: #ffffff;
+    -fx-background-color: #ffffff;
 }
+
+.MenuBar{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #111111;
+    -fx-background-color: #ffffff;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+}
+
+.menu-item:focused {
+     -fx-background-color: #ffffff;
+}
+
 
 #mainArea{
     -fx-font-size: 15;
     -fx-font-family: "Lucida Console";
-    -fx-text-fill: #111111;
     -fx-control-inner-background: #ffffff;
 }
 
@@ -26,7 +42,7 @@
 
 #VBox{
     -fx-background-color: #ffffff;
+    -fx-base: #ffffff;
     -fx-border-color: #ffffff;
     -fx-background-insets: 0;
-
 }

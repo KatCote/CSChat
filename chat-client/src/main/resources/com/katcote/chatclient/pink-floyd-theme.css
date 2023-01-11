@@ -1,0 +1,48 @@
+.root {
+    -fx-base: #FFE4E1;
+    -fx-faint-focus-color: #FFE4E1;
+    -fx-background-color: #FFE4E1;
+}
+
+.MenuBar{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #191970;
+    -fx-background-color: #FFE4E1;
+}
+
+.menu-item .label {
+    -fx-text-fill: black;
+}
+
+.menu-item:focused {
+     -fx-background-color: #FFE4E1;
+}
+
+
+#mainArea{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-control-inner-background: #FFE4E1;
+}
+
+.button{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #191970;
+    -fx-background-color: #FFE4E1;
+}
+
+#msgField{
+    -fx-font-size: 15;
+    -fx-font-family: "Lucida Console";
+    -fx-text-fill: #191970;
+    -fx-background-color: #FFE4E1;
+}
+
+#VBox{
+    -fx-background-color: #FFE4E1;
+    -fx-base: #FFE4E1;
+    -fx-border-color: #FFE4E1;
+    -fx-background-insets: 0;
+}

@@ -1,6 +1,8 @@
 package com.katcote.chatclient;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -44,6 +46,8 @@ public class Controller implements Initializable {
     public static void systemMsgAction(String msg) {
         network.sendMessage(msg);
     }
+
+
 
     public void aboutWebAction() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Come back again later", ButtonType.OK);

@@ -28,7 +28,7 @@ public class ServerController extends Application {
         String urlBase = classDirectory.substring(0, classDirectory.length() - 26);
         String fxmlURLStr = "file:/" + urlBase.split(":")[0] +
                 ":" + urlBase.substring(2).replaceAll("\\\\", "/") +
-                "/CSChat/chat-server/target/classes/com.katcote.chatserver/server.fxml";
+                "/CSChat/chat-server/src/main/resources/com.katcote.chatserver/server.fxml";
 
         System.out.println(fxmlURLStr);
 
@@ -36,10 +36,10 @@ public class ServerController extends Application {
 
         System.out.println(fxmlURL);
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlURL);
         //fxmlLoader.setLocation(fxmlURL);
 
-        Parent root = fxmlLoader.load(Objects.requireNonNull(getClass().getResource(fxmlURLStr)));
+        Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, 600, 400);
 
         stage.setTitle("CSChat System (R) Server");

@@ -9,6 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+
+
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.katcote.chatserver.ServerController">
    <children>
       <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -17,12 +19,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="431.0">
                      <children>
-                        <TableView layoutX="-2.0" layoutY="1.0" prefHeight="344.0" prefWidth="602.0">
+                        <TableView fx:id="UsersTable" layoutX="-8.0" prefHeight="344.0" prefWidth="602.0">
                           <columns>
-                            <TableColumn prefWidth="29.0" text="ID" />
+                            <TableColumn prefWidth="29.0" text="#" />
                             <TableColumn prefWidth="377.0" text="Username" />
-                              <TableColumn prefWidth="99.0" text="Available" />
-                              <TableColumn prefWidth="94.0" text="IP" />
+                              <TableColumn prefWidth="118.0" text="IP" />
+                              <TableColumn prefWidth="75.0" text="ID" />
                           </columns>
                         </TableView>
                      </children>

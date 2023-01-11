@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-   <img src="https://img.shields.io/badge/Patch-v1.3.6-success" alt="Patch">
+   <img src="https://img.shields.io/badge/Patch-v1.3.7-success" alt="Patch">
    <img src="https://img.shields.io/badge/Java-openjdk--19-orange" alt="Java">
    <img src="https://img.shields.io/badge/License-MIT-red" alt="License">
 </p>
@@ -32,11 +32,13 @@ Has console for CMD or IDE.
 
 Client commands: 
 
-`/changename` - Change client name to NotNull (or space at all) for all clients and on a server.
+`/changename` - Change client name to NotNull (or space at all) for all clients and on a server
 
-`/exit` - Exit chat from both sides.
+`/exit` - Exit chat from both sides
 
 `/motd` - Set MOTD for new clients
+
+`/help` - Show page with all commands
 
 Server commands:
 
@@ -45,6 +47,8 @@ Server commands:
 `motd` - Set MOTD for new clients
 
 `clist` - List of all clients is this session (online)
+
+`/help` - Show page with all commands
 
 ## Developers
 

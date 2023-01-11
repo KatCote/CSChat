@@ -48,7 +48,6 @@ public class ClientApplication extends Application {
         String defaultTheme = props.getProperty("DEFAULT_THEME");
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("client.fxml"));
-        System.out.println(getClass().getResource("client.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root, WIDTH, HEIGHT);
 

@@ -1,9 +1,11 @@
 package com.katcote.chatclient;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -15,6 +17,12 @@ public class SettingsController {
 
     @FXML
     TextField usernameField;
+
+    @FXML
+    TextField settingsUsernameField;
+
+    @FXML
+    CheckBox settingsUsernameCheckbox;
 
     public void showDialog() {
         try {
@@ -38,6 +46,10 @@ public class SettingsController {
     public void setUsername() {
         Controller.systemMsgAction("/changename " + usernameField.getText());
         usernameField.clear();
+    }
+
+    public void setUsernameToSettings(){
+
     }
 
 }

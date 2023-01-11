@@ -69,6 +69,16 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
                 sysMessage("New MOTD: " + ServerApplication.MOTD + "\n");
                 return;
             }
+            case "/help" -> {
+                ctx.writeAndFlush("[SERVER_MSG]" +
+                        "/changename - Change client name to NotNull (or space at all) " +
+                        "for all clients and on a server.\n" +
+                        "/exit - Exit chat from both sides.\n" +
+                        "/motd - Set MOTD for new clients\n" +
+                        "/help - Show this page\n"
+                );
+                return;
+            }
         }
         broadcastMessage(msg, clientName);
     }

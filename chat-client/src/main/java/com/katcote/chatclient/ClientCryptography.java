@@ -84,7 +84,8 @@ public class ClientCryptography {
 
             if (serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/changename ") ||
                     serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/exit") ||
-                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/motd")) {
+                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/motd") ||
+                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/help")) {
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }

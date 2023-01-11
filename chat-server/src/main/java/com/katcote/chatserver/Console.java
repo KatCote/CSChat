@@ -43,6 +43,15 @@ public class Console {
                         System.out.println(i + " | " + MainHandler.cList().get(i));
                     }
                 }
+
+                case "help" -> {
+                    System.out.println(
+                            "stop - Stop the server with close all clients.\n" +
+                            "motd - Set MOTD for new clients\n" +
+                            "clist - List of all clients is this session (online)\n" +
+                            "help - Show this page"
+                    );
+                }
             }
         }
 

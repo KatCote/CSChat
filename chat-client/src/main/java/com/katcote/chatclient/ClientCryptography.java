@@ -85,7 +85,8 @@ public class ClientCryptography {
             if (serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/changename ") ||
                     serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/exit") ||
                     serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/motd") ||
-                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/help")) {
+                    serverCommand(msg.toString().toLowerCase(Locale.ROOT), "/help") ||
+                    serverCommand(msg.toString(), "[CLIENT_MSG]Username ") ) {
                 out.add(ByteBufUtil.encodeString(ctx.alloc(), CharBuffer.wrap(msg), charset));
                 return;
             }
@@ -141,6 +142,11 @@ public class ClientCryptography {
                     System.out.println("[Server closed]");
                     wait(1000);
                     Controller.exitAction();
+                    return;
+                }
+
+                if(msg.toString(charset).equals("[SERVER_MSG]Wait_for_username")){
+                    Controller.systemMsgAction("[CLIENT_MSG]Username " + Controller.settingsUsername);
                     return;
                 }
 

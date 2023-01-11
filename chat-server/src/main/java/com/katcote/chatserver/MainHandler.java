@@ -18,9 +18,8 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         System.out.println("Client is connected: " + ctx);
-        ctx.writeAndFlush("[SERVER_MSG]" + ServerApplication.MOTD + "\n");
+        ctx.writeAndFlush("[SERVER_MSG]Wait_for_username");
         clientName = "Client #" + newClientIndex;
-        sysMessage(clientName + " join\n");
         channelsList.add(ctx.channel());
         userNameList.add(clientName);
         newClientIndex++;
@@ -79,6 +78,16 @@ public class MainHandler extends SimpleChannelInboundHandler<String> {
                 );
                 return;
             }
+        }
+        if(msg.startsWith("[CLIENT_MSG]Username ")){
+            if (!(msg.substring(21).toLowerCase(Locale.ROOT).equals("default"))){
+                clientName = msg.substring(21);
+                int bufIndex = channelsList.indexOf(ctx.channel());
+                userNameList.remove(bufIndex);
+                userNameList.add(bufIndex, clientName);
+            }
+            ctx.writeAndFlush("[SERVER_MSG]" + ServerApplication.MOTD + "\n");
+            return;
         }
         broadcastMessage(msg, clientName);
     }

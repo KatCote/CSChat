@@ -11,12 +11,17 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.StageStyle;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.URL;
 
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     private static Network network;
+
+    public static String settingsUsername;
 
     @FXML
     TextField msgField;
@@ -27,6 +32,17 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         network = new Network((args) -> mainArea.appendText((String) args[0]));
+
+        Properties settings = new Properties();
+
+        try {
+            settings.load(new FileInputStream("Settings.ini"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        settingsUsername = settings.getProperty("USERNAME");
+
     }
 
     public void showSettingsMenu() {

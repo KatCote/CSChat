@@ -169,7 +169,7 @@ public class SettingsController {
         settings.setProperty("CURRENT_THEME", theme);
 
         try {
-            settings.store(new FileOutputStream("Settings.ini"), "Return to default Username");
+            settings.store(new FileOutputStream("Settings.ini"), "Changed a current theme");
         } catch (IOException e) {
             e.printStackTrace();
         }

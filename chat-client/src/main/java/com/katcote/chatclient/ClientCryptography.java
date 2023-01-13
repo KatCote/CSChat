@@ -150,7 +150,13 @@ public class ClientCryptography {
                     return;
                 }
 
-                out.add("\n" + msg.toString(charset).substring(12) + "\n");
+                String msg_decoded = msg.toString(charset).substring(12);
+
+                while (msg_decoded.contains("[SERVER_MSG]")) {
+                    msg_decoded = msg_decoded.replace("[SERVER_MSG]", "");
+                }
+
+                out.add("\n" + msg_decoded + "\n");
                 return;
             }
             try {

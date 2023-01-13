@@ -10,6 +10,7 @@ public class Console {
         private static void csCommand(String command) {
             switch (command.toLowerCase().split(" ")[0]) {
                 case "stop" -> {
+                    System.out.print("\n>>>");
                     MainHandler.stopServer();
                     try {
                         sleep(5000);
@@ -40,7 +41,9 @@ public class Console {
                         break;
                     }
                     for (int i = 0; i < MainHandler.cList().size(); i++) {
-                        System.out.println(i + " | " + MainHandler.cList().get(i));
+                        System.out.println(i
+                                + " | " + MainHandler.cList().get(i)
+                                + " | " + MainHandler.cListIP().get(i));
                     }
                 }
 
